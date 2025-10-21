@@ -1,10 +1,12 @@
+{/**react-native-push-notification não funciona com o Expo Go.**/}
+
 import React, { useEffect } from 'react';
-import { View, Button } from 'react-native';
+import { Button, View } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 
 export default function PushNotificationExample() {
   useEffect(() => {
-    // Configuração inicial
+
     PushNotification.configure({
       onNotification: function (notification) {
         console.log('Notificação recebida:', notification);
@@ -15,8 +17,8 @@ export default function PushNotificationExample() {
 
   const scheduleNotification = () => {
     PushNotification.localNotificationSchedule({
-      message: 'Esta é uma notificação agendada (RNP)', // conteúdo da notificação
-      date: new Date(Date.now() + 5 * 1000), // 5 segundos depois
+      message: 'Esta é uma notificação agendada (RNP)',
+      date: new Date(Date.now() + 5 * 1000), 
       allowWhileIdle: true,
     });
   };

@@ -1,24 +1,27 @@
-import React from 'react';
-import { View, Button } from 'react-native';
+{/**Notifee não é compatível com o aplicativo padrão do Expo Go**/}
+
+
 import notifee, { AndroidImportance } from '@notifee/react-native';
 import { router } from 'expo-router';
+import React from 'react';
+import { Button, View } from 'react-native';
 
-export default function NotifeeExample() {
+export default function NotifeeExemplo() {
   const onDisplayNotification = async () => {
-    // Cria um canal Android (necessário)
+
     const channelId = await notifee.createChannel({
       id: 'default',
       name: 'Default Channel',
       importance: AndroidImportance.HIGH,
     });
 
-    // Mostra a notificação
+
     await notifee.displayNotification({
-      title: 'Olá! 👋',
+      title: 'Olá!',
       body: 'Esta é uma notificação usando Notifee.',
       android: {
         channelId,
-        smallIcon: 'ic_launcher', // ícone da notificação (coloque em android/app/src/main/res/mipmap)
+        smallIcon: 'ic_launcher', 
         pressAction: {
           id: 'default',
         },
@@ -30,7 +33,8 @@ export default function NotifeeExample() {
     <View style={{ padding: 20 }}>
         <View style={{gap:20}}>
         <Button title="Mostrar Notificação (Notifee)" onPress={onDisplayNotification} />
-        <Button title="Ver Notificações Push" onPress={() => router.push('/PushNotification')} /> 
+        <Button title="Ver Notificações Push" onPress={() => router.push('/09-PushNotification')} /> 
+      
         </View>
     </View>
     
